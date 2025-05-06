@@ -1,0 +1,61 @@
+/* theme.css */
+body.light-mode {
+  background-color: #f0fff5;
+  color: #000;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+.box {
+  background-color: inherit;
+  color: inherit;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+}
+
+.switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  width: 50px;
+  height: 25px;
+  background-color: #ccc;
+  display: inline-block;
+  border-radius: 25px;
+  position: relative;
+  cursor: pointer;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  background-color: white;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s;
+}
+
+input:checked + .slider:before {
+  transform: translateX(25px);
+}
+
+input:checked + .slider {
+  background-color: #4CAF50;
+}
