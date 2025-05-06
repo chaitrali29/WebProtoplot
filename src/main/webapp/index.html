@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HealthCare | Home</title>
+	<link rel="stylesheet" href="theme.css">
+
+	
+  <style>
+    body.light-mode {
+      background-color: #f0f4f8;
+      color: #333;
+      transition: 0.5s;
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: white;
+      transition: 0.5s;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+      margin-left: 20px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #4CAF50;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+  </style>
+</head>
+
+<body style="margin: 0; font-family: 'Segoe UI', sans-serif;" class="light-mode">
+
+  <!-- Header -->
+  <header style="background: #2e7d32; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;">
+    <div style="color: white;">
+      <h1 style="margin: 0;">HealthCare+</h1>
+      <p style="margin: 5px 0 0;">Your Health, Our Priority</p>
+    </div>
+    <nav style="display: flex; align-items: center;">
+      <a href="login.jsp" style="color: white; text-decoration: none; margin-right: 20px; font-weight: bold;">Login</a>
+      <a href="signup.jsp" style="color: white; text-decoration: none; font-weight: bold;">Signup</a>
+
+      <!-- Toggle Switch -->
+      <!-- Toggle Mode -->
+
+<label class="switch">
+  <input type="checkbox" id="modeToggle">
+  <span class="slider"></span>
+</label>
+
+
+    </nav>
+  </header>
+
+  <!-- Carousel -->
+  
+
+  <!-- Main Section -->
+  <section style="text-align: center; padding: 50px 20px;">
+    <h2 style="font-size: 32px; color: #2e7d32;">Welcome to HealthCare+</h2>
+    <p style="max-width: 600px; margin: 20px auto; font-size: 18px;">
+      We are committed to your well-being. Login or sign up to access personalized health services, track appointments, and get expert advice.
+    </p>
+    <a href="login.jsp" style="display: inline-block; margin: 20px 10px; padding: 12px 25px; background: #2e7d32; color: white; border-radius: 6px; text-decoration: none; font-size: 16px;">
+      Get Started
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background: #1b5e20; color: white; text-align: center; padding: 15px;">
+    <p>&copy; 2025 HealthCare+. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll("#carousel img");
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.style.display = (i === index) ? "block" : "none";
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    setInterval(nextSlide, 3000);
+    showSlide(currentSlide);
+
+    // Dark/Light Mode Toggle
+    const toggle = document.getElementById('modeToggle');
+    document.addEventListener("DOMContentLoaded", () => {
+      const currentMode = localStorage.getItem('theme');
+      if (currentMode === 'dark') {
+        document.body.classList.replace('light-mode', 'dark-mode');
+        toggle.checked = true;
+      }
+    });
+
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+        document.body.classList.replace('light-mode', 'dark-mode');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.body.classList.replace('dark-mode', 'light-mode');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+
+</body>
+</html>
